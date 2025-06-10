@@ -8,8 +8,8 @@ app.set("trust proxy", true);
 app.get("/", (req, res) => {
     // Obtener la IP del cliente
     const xff =
-        req.headers["CF-Connecting-IP"] ?? req.headers["x-forwarded-for"];
-    const clientIp = xff ? xff.split(",")[0].trim() : req.socket.remoteAddress;
+        req.headers["cf-connecting-ip"] ?? req.headers["x-forwarded-for"];
+    const clientIp = xff ? xff.split(",")[0].trim() : req?.socket?.remoteAddress;
 
     res.json(clientIp ?? "No se pudo determinar la IP");
 });
