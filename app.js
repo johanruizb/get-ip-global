@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
         ? xff.split(",")[0].trim()
         : req?.socket?.remoteAddress;
 
-    res.json(clientIp ?? "No se pudo determinar la IP");
+    res.send(clientIp ?? "No se pudo determinar la IP");
 });
 
 app.get("/health", (req, res) => {
